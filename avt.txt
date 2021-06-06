@@ -1,0 +1,89 @@
+http://res.cloudinary.com/dvoe9idbe/image/upload/v1620826127/dzcqvt8p5rsaoytdgfol.jpg
+http://res.cloudinary.com/dvoe9idbe/image/upload/v1620828219/tdhvufjrdslclryoj044.jpg
+
+
+https://iupac.org/wp-content/uploads/2018/05/default-avatar.png
+https://data.webnhiepanh.com/wp-content/uploads/2020/11/21105453/phong-canh-1.jpg
+
+
+http://res.cloudinary.com/dvoe9idbe/image/upload/v1620830921/wa1h9ithpfr1zaigtlqo.jpg
+http://res.cloudinary.com/dvoe9idbe/image/upload/v1620830924/jshyc2msdnccypquuuaf.jpg
+
+
+
+
+
+
+link
+    https://www.facebook.com/hinh.nguyenxuan.543/
+    https://www.instagram.com/kee77_hjnh/
+    https://github.com/hinhnxth2009027
+
+
+
+
+
+
+
+
+
+
+
+if (isPlaying){
+    if ('${song.check}'===$('#check_song_active').val()){
+        isPlaying=false;
+        music.pause();
+        $('.icon_status_play').removeClass('fa-pause');
+        $('.icon_status_play').addClass('fa-play');
+        $('#btn_icon_play').removeClass('d-none');
+        $('#btn_icon_play').addClass('d-flex');
+        $('#btn_icon_pause').addClass('d-none');
+        $('#btn_icon_pause').removeClass('d-flex')
+    }else {
+        music.src='${song.audio}';
+        $('#show_name_song_play').text('${song.name} : ${song.author}')
+        music.play();
+        play_index = list_songs.findIndex(x => x.check === '${song.check}')
+        $('.icon_status_play').removeClass('fa-pause');
+        $('.icon_status_play').addClass('fa-play');
+        $('#check_song_active').val('${song.check}');
+        $('#${song.check}').removeClass('fa-play');
+        $('#${song.check}').addClass('fa-pause');
+        $('#btn_icon_play').removeClass('d-none');
+        $('#btn_icon_play').addClass('d-none');
+        $('#btn_icon_pause').addClass('d-flex');
+        $('#btn_icon_pause').removeClass('d-none')
+    }
+}else {
+    if ('${song.check}'===$('#check_song_active').val()){
+        music.play();
+        play_index = list_songs.findIndex(x => x.check === '${song.check}')
+        isPlaying=true;
+        $('.icon_status_play').removeClass('fa-pause');
+        $('.icon_status_play').addClass('fa-play');
+        $('#check_song_active').val('${song.check}');
+        $('#${song.check}').removeClass('fa-play');
+        $('#${song.check}').addClass('fa-pause');
+        $('#btn_icon_play').removeClass('d-flex');
+        $('#btn_icon_play').addClass('d-none');
+        $('#btn_icon_pause').removeClass('d-none')
+        $('#btn_icon_pause').addClass('d-flex');
+    }
+    else{
+        if ($('#check_song_active').val()===''){
+            $('#control_container').removeClass('d-none')
+        }
+        isPlaying = true;
+        $('#check_song_active').val('${song.check}')
+        $('#show_name_song_play').text('${song.name} : ${song.author}')
+        music.src = '${song.audio}'
+        music.play();
+        play_index = list_songs.findIndex(x => x.check === '${song.check}')
+        this.firstElementChild.nextElementSibling.classList.remove('fa-play');
+        this.firstElementChild.nextElementSibling.classList.add('fa-pause');
+        $('#btn_icon_play').removeClass('d-flex');
+        $('#btn_icon_play').addClass('d-none');
+        $('#btn_icon_pause').addClass('d-flex');
+        $('#btn_icon_pause').removeClass('d-none')
+    }
+}
